@@ -1,0 +1,19 @@
+import express, { query } from 'express'
+import { getUserById, getUserByUsername, getIdByUsername, createUser, login } from '../database.js'
+
+const router = express.Router()
+
+router.get("/register", async (req, res) => {
+    const user = req.query.user
+    const pass = req.query.pass
+    console.log(await createUser(user, pass))
+})
+
+
+router.get("/login", async (req, res) => {
+    const user = req.query.user
+    const pass = req.query.pass
+    console.log(await login(user, pass))
+})
+
+export default router;
